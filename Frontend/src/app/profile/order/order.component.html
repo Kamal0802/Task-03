@@ -1,0 +1,80 @@
+<div class="container mt-5">
+  <h2 class="ms-5">Shipping Address and Payment Method <i class="fa-solid fa-truck-fast text-success"></i></h2>
+
+  <div class="row">
+    <div class="col-8 p-5">
+      <form [formGroup]="shipForm" (ngSubmit)="ship()">
+       
+        <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control shadow"
+              placeholder="enter address"
+              id="floatingInput"
+              formControlName="address"
+            />
+            <label for="floatingInput">Address</label>
+          </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control shadow"
+            id="floatingInput"
+            placeholder="enter city"
+            formControlName="city"
+          />
+          <label for="floatingInput">city</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="number"
+            class="form-control shadow"
+            id="floatingInput"
+            placeholder="enter postal code"
+            formControlName="pincode"
+          />
+          <label for="floatingInput">Postal Code</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control shadow"
+            id="floatingInput"
+            placeholder="enter country"
+            formControlName="country"
+          />
+          <label for="floatingInput">country</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <select class="form-select shadow" id="paymentMethod" formControlName="paymentMethod">
+            <option value="Cash on Delivery" selected>Cash On Devlivery</option>
+
+            <option value="PayPal">PayPal</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+          </select>
+          <label for="paymentMethod">Payment Method</label>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Submit</button>
+      </form>
+    </div>
+
+    <div class="col-4 mb-5">
+      <h1 class="text-secondary">Shipping details </h1>
+      <p class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore
+        reprehenderit quis voluptates,
+      </p>
+      <h1 class="text-secondary">Delivery Details</h1>
+      <p class="lead">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi aut
+        dolore inventore cupiditate modi saepe officia
+      </p>
+    </div>
+  </div>
+</div>

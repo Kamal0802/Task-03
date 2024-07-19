@@ -1,0 +1,116 @@
+<div class="container ps-3 mt-5">
+  <h1>welcome {{ user.userName | uppercase }} !</h1>
+</div>
+<div class="container mt-3">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h4><i class="fa-regular fa-user me-4"></i>User Details</h4>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">User Name</div>
+        <div class="col-sm-9">{{ user.userName }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">Email</div>
+        <div class="col-sm-9">{{ user.email }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">Phone Number</div>
+        <div class="col-sm-9">{{ user.phoneNumber }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">Address</div>
+        <div class="col-sm-9">{{ user.address }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">City</div>
+        <div class="col-sm-9">{{ user.city }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">State</div>
+        <div class="col-sm-9">{{ user.state }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">Pincode</div>
+        <div class="col-sm-9">{{ user.pincode }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-sm-3 font-weight-bold">Country</div>
+        <div class="col-sm-9">{{ user.country }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-3 pb-3">
+  <div class="row justify-content-center">
+    <button class="btn col-6 shadow btn-primary p-3" (click)="toggle()">
+      <i class="fa-solid fa-arrow-down me-3"></i> See Your Orders<i
+        class="fa-solid fa-arrow-down ms-3"
+      ></i>
+    </button>
+  </div>
+
+  <div class="container mt-5" *ngIf="toggleVal">
+    <!-- <div class="row" *ngFor="let order of orders">
+
+    <span *ngFor="let product of order.orderItems" class="shadow row">
+      <div class="col-3 p-2 ms-5">
+        <img src="{{product.product.image}}" alt="" width="200">
+      </div><div class="col-6 p-2 mt-5 pt-5">
+        <h5>{{product.product.name}}</h5>
+        <h6>
+          Buying Quantity :
+          <span class="badge text-bg-warning">{{ product.quantity }}</span>
+        </h6>
+      </div>
+
+      <div class="col p-2 mt-5 pt-5">
+        <h4>Price: $ <span>{{product.product.price}}</span></h4>
+      </div>
+      
+      
+    </span>
+
+    </div> -->
+
+    <div *ngFor="let order of orders" class="order-card mt-2">
+      <hr />
+      <div class="order-details">
+        <h3 class="ms-5">
+          UserName: {{ order.user.userName }}
+          <span class="ms-5 ps-5">Order Id : {{ order._id }}</span>
+        </h3>
+        <div *ngFor="let item of order.orderItems" class="d-flex shadow p-3">
+          <img src="{{ item.product.image }}" width="200" />
+          <div class="mt-5 ms-5">
+            <h4>{{ item.name }}</h4>
+
+            <p class="display-5">{{ item.product.name }}</p>
+
+            <p class="lead">
+              Item Price:
+              <span class="h6">{{ "$" + item.price.toFixed(2) }}</span>
+            </p>
+
+            <h6>
+              Buying Quantity :
+              <span class="badge text-bg-warning">{{ item.quantity }}</span>
+            </h6>
+          </div>
+        </div>
+        <div class="text-end pe-5 me-5 mt-3">
+          <p class="lead">
+            Shipping Price:
+            <span class="h6">${{ order.shippingPrice.toFixed(2) }}</span>
+          </p>
+          <p class="lead">
+            Total Price:
+            <span class="h6"> ${{ order.totalPrice.toFixed(2) }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

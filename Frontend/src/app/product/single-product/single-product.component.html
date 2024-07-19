@@ -1,0 +1,130 @@
+<div class="container pe-5 ps-5">
+  <div class="row">
+    <div class="col-5 mt-5 image-container">
+      <img src="{{ product.image }}" alt="" width="400px" />
+    </div>
+
+    <div class="col p-5">
+      <h1>{{ product.name }}</h1>
+
+      <span
+        ><h6>
+          Price
+          <span class="ms-2 h4">$ {{ product.price }}</span>
+        </h6></span
+      >
+
+      <h6 class="d-flex">
+        Rating :
+        <span *ngFor="let i of rateArr">
+          <i
+            class="fa-solid fa-star ms-2 {{
+              i <= product.averageRating ? 'text-warning' : 'text-secondary'
+            }}"
+          ></i
+        ></span>
+      </h6>
+
+      <span
+        ><h6>
+          Catagory
+          <span class="ms-2 text-info h4">{{
+            product.category | uppercase
+          }}</span>
+        </h6></span
+      >
+
+      <span
+        ><h6>
+          Available Stocks :
+          <span class="ms-2 h4">{{ product.stock }}</span>
+        </h6></span
+      >
+
+      <h2>Description</h2>
+      <p>{{ product.description }}</p>
+
+      <div class="mt-4">
+        <button class="btn btn-secondary mb-2 me-3" (click)="sub()">-</button>
+        <input type="number" class="text-center mt-4" name="" id="" value={{quantity}} [(ngModel)]="quantity">
+        <button class="btn btn-secondary mb-2 ms-3" (click)="add()">+</button>
+      </div>
+
+      <div class="mt-4">
+        <button class="btn btn-warning shadow" (click)="addToCart()">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row ms-4">
+    <div class="col-12">
+      <h1>
+        <i class="fa-solid me-4 fa-pen-to-square text-warning"></i>Product
+        Reviews...
+      </h1>
+      <hr />
+    </div>
+
+    <div class="col-12">
+      <div
+        *ngFor="let review of product.reviews"
+        class="shadow border p-3 mb-3"
+      >
+        <span
+          ><span class="h4">{{
+            getUserName(review.user) | uppercase
+          }}</span></span
+        >
+        <p class="lead mt-2">{{ review.comment | uppercase }}</p>
+        <h6 class="d-flex">
+          Rating :
+          <span *ngFor="let i of rateArr">
+            <i
+              class="fa-solid fa-star ms-2 {{
+                i <= review.rating ? 'text-warning' : 'text-secondary'
+              }}"
+            ></i
+          ></span>
+        </h6>
+        <p>
+          <span class="h6 me-3"
+            >Commented On <i class="fa-solid ms-2 fa-calendar-week"></i></span
+          >{{ review.createdAt | date }}
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ms-4 shadow review border pe-5 pt-3 ps-3 pb-5 mb-5">
+    <div class="container mt-4">
+
+      <form [formGroup]="reviewForm" (ngSubmit)="navigate()">
+          <h1 class="mb-3">Enter Your Review</h1>
+        <div class="mb-3">
+          <label for="comments" class="form-label">Comments</label>
+          <textarea
+            class="form-control"
+            id="comments"
+            rows="4"
+            placeholder="Enter your comments"
+            formControlName="comment"
+          ></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <select class="form-select" id="rating" formControlName="rating">
+            <option selected>Select a rating</option>
+            <option value="1">1 - Poor</option>
+            <option value="2">2 - Fair</option>
+            <option value="3">3 - Good</option>
+            <option value="4">4 - Very Good</option>
+            <option value="5">5 - Excellent</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-warning shadow">Submit Review</button>
+      </form>
+    </div>
+  </div>
+</div>

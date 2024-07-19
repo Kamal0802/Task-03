@@ -1,0 +1,82 @@
+<div class="row justify-content-center ms-4 pt-2">
+  <div class="col-5">
+    <form action="" class="p-1" (ngSubmit)="Search()">
+      <input
+        type="text"
+        class="form-control p-2 shadow"
+        placeholder="search products..."
+        [(ngModel)]="searchText"
+        [ngModelOptions]="{ standalone: true }"
+      >
+       
+
+      <button class="btn btn-light ms-1" cl>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </form>
+  </div>
+</div>
+<div class="row justify-content-evenly p-3 mt-3">
+  <div
+    class="col-md-4 pb-5 ps-5 pe-5 shadow"
+    *ngFor="
+      let prod of allProducts
+        | paginate
+          : {
+              itemsPerPage: productListSize,
+              currentPage: pageNumber,
+              totalItems: count
+            }
+    "
+  >
+    <div class="text-center mb-3">
+      <img
+        src="{{ prod.image }}"
+        alt=""
+        width="200px"
+        height="250px"
+        routerLink="/singleProd/{{ prod._id }}"
+      />
+    </div>
+    <hr />
+    <h4>{{ prod.name }}</h4>
+    <h6>price : $ {{ prod.price }}</h6>
+    <p
+      style="
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100ch;
+      "
+    >
+      {{ prod.description }}
+    </p>
+
+    <h6 class="d-flex">
+      Rating :
+      <span *ngFor="let i of rateArr">
+        <i
+          class="fa-solid fa-star ms-2 {{
+            i <= prod.averageRating ? 'text-warning' : 'text-secondary'
+          }}"
+        ></i
+      ></span>
+    </h6>
+
+    <button
+      class="btn btn-warning shadow mt-3"
+      routerLink="/singleProd/{{ prod._id }}"
+    >
+      Add To Cart
+    </button>
+  </div>
+</div>
+<div class="row justify-content-center ms-5 ps-3 p-3">
+  <div class="col-5">
+    <pagination-controls
+      previousLabel="previous"
+      nextLabel="next"
+      (pageChange)="onPageChange($event)"
+    ></pagination-controls>
+  </div>
+</div>

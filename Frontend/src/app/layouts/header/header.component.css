@@ -1,0 +1,31 @@
+form,
+input {
+    border-radius: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.container-fluid {
+    padding: 0%;
+    margin: 0%;
+}
+
+.cart {
+    display: flex;
+    flex-direction: row;
+}
+
+.log{
+    cursor: pointer;
+}
+
+

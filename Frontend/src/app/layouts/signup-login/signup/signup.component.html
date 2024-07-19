@@ -1,0 +1,133 @@
+<div class="container mt-3 text-center mt-5 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <span class="h4"><i class="fa-solid fa-user h3 text-dark me-3"></i>CREATE YOUR ACCOUNT</span>
+    </div>
+  </div>
+
+  <div class="row justify-content-center ">
+    <div class="box">
+      <form action="" [formGroup]="signupForm" class="pe-5 ps-5 pb-5 pt-3" (ngSubmit)="getData()">
+        <div class="container mt-4">
+       
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control shadow"
+              id="username"
+              placeholder="Enter your username"
+              formControlName="userName"
+            />
+            <label for="username">Username</label>
+          </div>
+
+          <!-- Email -->
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control shadow"
+              id="email"
+              placeholder="name@example.com"
+              formControlName="email"
+            />
+            <label for="email">Email address</label>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control shadow"
+              id="password"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <label for="password">Password</label>
+          </div>
+
+        
+          <div class="form-floating mb-3">
+            <input
+              type="tel"
+              class="form-control shadow"
+              id="phone"
+              placeholder="Enter your phone number"
+              formControlName="phoneNumber"
+            />
+            <label for="phone">Phone number</label>
+          </div>
+
+         
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control shadow"
+              id="address"
+              placeholder="Enter your address"
+              formControlName="address"
+            />
+            <label for="address">Address</label>
+          </div>
+
+         
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  id="city"
+                  placeholder="Enter your city"
+                  formControlName="city"
+                />
+                <label for="city">City</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  id="state"
+                  placeholder="Enter your state"
+                  formControlName="state"
+                />
+                <label for="state">State</label>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  id="country"
+                  placeholder="Enter your country"
+                  formControlName="country"
+                />
+                <label for="country">Country</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input
+                  type="text"
+                  class="form-control shadow"
+                  id="pincode"
+                  placeholder="Enter your pin code"
+                  formControlName="pincode"
+                />
+                <label for="pincode">Pin Code</label>
+              </div>
+            </div>
+          </div>
+
+          
+
+         
+          <button type="submit" class="btn btn-warning shadow mt-4" style="width: 250px;" [disabled]="this.signupForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

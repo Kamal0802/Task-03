@@ -1,0 +1,45 @@
+<div class="container mt-3 p-5 text-center">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <span class="h4"><i class="fa-solid fa-user h3 text-dark me-3"></i>LOGIN YOUR ACCOUNT</span>
+    </div>
+  </div>
+
+  <div class="row justify-content-center pt-3">
+    <div class="box">
+      <form action="" [formGroup]="loginForm" (ngSubmit)="getData()" class="mt-3 ps-5 pe-5 pb-5 pt-3">
+        <div class="col-12">
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control shadow"
+              id="floatingInput"
+              placeholder="name@example.com"
+              formControlName="email"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control shadow"
+              id="floatingPassword"
+              placeholder="Password"
+              formControlName="password"
+            />
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="mt-3 text-center">
+            <button class="btn btn-warning mt-3 shadow" style="width: 200px;" [disabled]="loginForm.invalid">Login</button>
+          </div>
+
+          <div class="mt-3">
+            <p>Don't have an account ? <a href="/signup">Sign Up</a></p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
